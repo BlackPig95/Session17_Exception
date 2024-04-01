@@ -58,17 +58,16 @@ public class Bai5
 
     private static int partition(int[] arr, int low, int high)
     {
-        int pivot = arr[low];
+        int pivot = arr[low + (high - low) / 2];
         int i = low;
         int j = high;
         while (i < j)
-        {
-            System.out.println("Called");
-            while (arr[i] <= pivot)//Duyệt cho đến khi tìm thấy element lớn hơn pivot
+        {   //Tránh bị index out of bound khi arr[i] hoặc arr[j] quá lớn hoặc quá nhỏ
+            while (i <= high && arr[i] <= pivot)//Duyệt cho đến khi tìm thấy element lớn hơn pivot
             {
                 i++;
             }
-            while (arr[j] > pivot)//Duyệt cho đến khi tìm thấy element nhỏ hơn hoặc bằng pivot
+            while (j >= low && arr[j] > pivot)//Duyệt cho đến khi tìm thấy element nhỏ hơn hoặc bằng pivot
             {
                 j--;
             }
